@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MiPhone · Acceso Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="staff.css">
+</head><body>
+
+<div class="lw" id="login"><div class="lc" id="lf">
+  <span class="lg" role="img" aria-label="MiPhone Catamarca"></span>
+  <div class="eb">Acceso Staff</div><h1>Ingresá al panel.</h1>
+  <label for="u">Usuario</label><input id="u" autocomplete="username" autofocus>
+  <label for="p">Contraseña</label><input id="p" type="password" autocomplete="current-password">
+  <div class="err" id="er" role="alert"></div>
+  <button class="btn" type="button" id="go">Ingresar</button>
+  <div class="hint">Demo: usuario <b>staff</b> · contraseña <b>miphone2026</b></div>
+  <button type="button" class="back" id="bk" style="width:100%">← Volver a la web del sorteo</button>
+</div></div>
+
+<div id="app" hidden>
+  <header><div class="hb"><span class="lg" role="img" aria-label="MiPhone"></span><div class="t">Panel Staff<small>Sorteo MiPhone Catamarca</small></div><div class="sp"></div><button class="pill" id="out">Cerrar sesión</button></div></header>
+  <main>
+    <div class="eb">Resumen</div><h2>Estadísticas y pedidos.</h2>
+    <div class="kp">
+      <div class="k"><span>Pedidos aprobados</span><b id="k1">0</b></div>
+      <div class="k"><span>Chances vendidas</span><b id="k2">0</b></div>
+      <div class="k"><span>Recaudación</span><b id="k3">$0</b></div>
+      <div class="k"><span>Ticket promedio</span><b id="k4">$0</b></div>
+    </div>
+    <div class="g2">
+      <div class="card"><h3>Ventas de los últimos 7 días</h3><div class="bars" id="bars"></div></div>
+      <div class="card"><h3>Packs más elegidos</h3><div class="pk" id="pk"></div></div>
+    </div>
+    <div class="cfg">
+      <div class="card">
+        <div class="hd"><h3>Packs de chances y precios</h3></div>
+        <p class="sub"><b>Importante:</b> con el servidor activo, los precios que se cobran salen del archivo <b>server/packs.json</b> y este editor solo afecta la vista local del navegador. Editá ese archivo y reiniciá el servidor para cambiar precios.</p>
+        <div class="pr h"><span>Chances</span><span>Precio ($)</span><span>Por chance</span><span style="text-align:center">Más elegido</span><span></span></div>
+        <div id="prs"></div>
+        <div class="row"><button class="sbtn o" id="padd">+ Agregar pack</button><button class="sbtn o" id="prst">Restablecer</button><button class="sbtn" id="psave">Guardar cambios</button></div>
+        <div class="msg" id="pmsg" role="status"></div>
+      </div>
+      <div class="card">
+        <h3>Pasarela de pago</h3>
+        <p class="sub">La cuenta de Mercado Pago se conecta en el servidor con las credenciales de tu aplicación (variable <b>MP_ACCESS_TOKEN</b> en el archivo .env). Si no está configurada, la web ofrece solo transferencia.</p>
+        <div class="mp" id="mps"><i></i><div><b id="mpt">Verificando…</b><small id="mpd"></small></div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>Pedidos y números</h3>
+      <div class="tb"><input id="q" placeholder="Buscar por nombre, email, celular o código MIP-…" aria-label="Buscar"><select id="f" aria-label="Estado"><option value="">Todos</option><option value="Aprobado">Aprobado</option><option value="Pendiente">Pendiente</option><option value="Rechazado">Rechazado</option></select><button class="csv" id="csv">Exportar CSV</button></div>
+      <div class="tw"><table><thead><tr><th>Pedido</th><th>Fecha</th><th>Participante</th><th>Chances</th><th>Monto</th><th>Pago</th><th>Estado</th></tr></thead><tbody id="tb"></tbody></table></div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="ov" id="ov"><div class="md"><button class="x" id="mx" aria-label="Cerrar">×</button><div id="mb"></div></div></div>
+
+<script src="staff.js"></script>
+</body></html>
